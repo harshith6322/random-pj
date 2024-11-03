@@ -1,0 +1,19 @@
+@use "button" as btn;
+@use "prime" as prm;
+
+// this is nesting in sass
+nav {
+  background-color: prm.$prime-nav;
+  padding: 10%;
+  div {
+    width: prm.$prime-100px;
+    height: prm.$prime-100px;
+    font-size: prm.$prime-fontsize-20px;
+  }
+  li {
+    list-style: none;
+    display: flex;
+    margin: 5px;
+    font-size: 16px;
+  }
+}
