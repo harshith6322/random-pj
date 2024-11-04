@@ -3,6 +3,7 @@ const fs = require("node:fs");
 const os = require("node:os");
 const process = require("node:process");
 const cluster = require("node:cluster");
+const { FORM } = require("./db");
 
 const result = os.cpus().length;
 const app = express();
@@ -19,12 +20,15 @@ if (cluster.isPrimary) {
 
   cluster.on("exit", (worker, code, signal) => {
     console.log(`worker ${worker.process.pid} died`);
-    // cluster.fork();
+    cluster.fork();
   });
 } else {
   app.get("/", async (req, res) => {
     let val = count++;
-
+    await FORM.create({
+      firstname: "harshit",
+      lastname: "reddy",
+    });
     console.log(`id : ${process.pid}`);
     res.json({
       result,
