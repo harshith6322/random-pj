@@ -1,0 +1,31 @@
+version: "3.8"
+
+services:
+  app:
+    image: harshithreddy6322/nodecpu:v2.0-alpine
+    ports:
+      - "3000:3000"
+    networks:
+      - mongo-to-node-1
+    volumes:
+      - "C:\\Users\\rrche\\Desktop\\testing-pj\\node:/apps" # Ensure correct path syntax on Windows
+    depends_on:
+      - mongo-1
+
+  mongo-1:
+    image: mongo
+    container_name: mongo-1 # Specify the container name here
+    volumes:
+      - vol-1:/data/db
+    ports:
+      - "27017:27017"
+    networks:
+      - mongo-to-node-1
+
+volumes:
+  vol-1:
+    external: true # Use an existing volume
+
+networks:
+  mongo-to-node-1:
+    external: true # Use an existing network

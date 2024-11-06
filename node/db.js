@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 try {
   mongoose
-    .connect("mongodb://nwtwork-3000-27017:27017/")
+    .connect("mongodb://mongo-1:27017/")
     .then(() => console.log("database is connected"))
     .catch((err) => console.log(`error ${err}`));
 } catch (err) {
