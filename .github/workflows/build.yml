@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - main
-    paths:
-      - "react-reducer/**" # Trigger on changes within this directory
 
 jobs:
   Continuous-Integration:
