@@ -1,0 +1,38 @@
+name: Build on Push
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "react-reducer-old/**" # Only triggers when changes are made in this path
+
+jobs:
+  Continuous-Integration:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out specific folder
+        uses: actions/checkout@v3
+        with:
+          # Enable sparse checkout
+          path: react-reducer-old # Sets working directory to react-reducer-old
+          sparse-checkout: |
+            react-reducer-old
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "20"
+
+      - name: Install Dependencies
+        run: npm install
+        working-directory: ./react-reducer-old # Specify the path to your React project
+
+      - name: Run Linting Check
+        run: npm run lint
+        working-directory: ./react-reducer-old
+
+      - name: Run Build
+        run: npm run build
+        working-directory: ./react-reducer-old
