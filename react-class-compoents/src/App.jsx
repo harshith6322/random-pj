@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 import React, { useReducer, useState } from "react";
 
 function reducer(state, action) {
@@ -51,7 +53,9 @@ function App() {
         {todos.length === 0 ? (
           <div>No todos</div>
         ) : (
-          todos.map((todo) => <Todo todo={todo} dispatch={dispatch} />)
+          todos.map((todo) => (
+            <Todo todo={todo} key={todo.id} dispatch={dispatch} />
+          ))
         )}
       </div>
     </>
@@ -65,6 +69,7 @@ function Todo({ todo, dispatch }) {
   function handleDelete() {
     dispatch({ type: "delete", payload: todo.id });
   }
+
   return (
     <div>
       <h4 key={todo.id}>

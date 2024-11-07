@@ -1,0 +1,28 @@
+name: Build on push
+
+on:
+  push_request:
+    branches:
+      - main
+
+jobs:
+  Continuous-Integration:
+    build:
+      runs-on: ubuntu-latest
+
+      steps:
+        - name: checking out repo
+          uses: actions/checkout@v3
+        - name: Use Node.js
+          uses: actions/setup-node@v3
+          with:
+            node-version: "20"
+
+        - name: Install Dependencies
+          run: npm install
+
+        - name: Run linting check
+          run: npm run lint
+
+        - name: Run Build
+          run: npm run build
