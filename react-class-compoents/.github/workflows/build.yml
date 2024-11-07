@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - main
-    paths:
-      - "react-reducer-old/**" # Only triggers when changes are made in this path
 
 jobs:
   Continuous-Integration:
