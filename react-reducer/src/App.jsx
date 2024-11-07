@@ -5,7 +5,7 @@ import React, { useReducer, useState } from "react";
 function reducer(state, action) {
   switch (action.type) {
     case "addtodo":
-      return [...state, addtodo(action.payload)];
+      return [..state, addtodo(action.payload)];
     case "toggle":
       return state.map((todo) => {
         if (todo.id === action.payload) {
