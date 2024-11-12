@@ -1,0 +1,6 @@
+@use "prime" as prm;
+
+.button {
+  width: prm.$prime-100px;
+  background-color: aqua;
+}
