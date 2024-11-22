@@ -4,7 +4,7 @@
 //   let config = {
 //     method: "get",
 //     maxBodyLength: Infinity,
-//     url: "http://33.0.0.0.:3000",
+//     url: "http://98.84.107.93:3000",
 //     headers: {
 //       "Content-Type": "application/json",
 //     },
@@ -33,7 +33,7 @@ async function sendRequest() {
   let config = {
     method: "get",
     maxBodyLength: Infinity,
-    url: "http://.o.o.o.o:3000", // Adjust to your actual URL
+    url: "http://node-autoscale-1-1037842250.us-east-1.elb.amazonaws.com", // Adjust to your actual URL
     headers: {
       "Content-Type": "application/json",
     },
@@ -64,7 +64,7 @@ async function sendBatchRequests(batchSize, maxRequests) {
 
 async function main() {
   const batchSize = 1000; // Number of requests in each batch
-  const maxRequests = 10000; // Total number of requests to send
+  const maxRequests = 20000; // Total number of requests to send
   await sendBatchRequests(batchSize, maxRequests);
   console.log("All requests completed");
 }

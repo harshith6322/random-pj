@@ -8,7 +8,6 @@ const { FORM } = require("./db");
 const result = os.cpus().length;
 const app = express();
 app.use(require("express-status-monitor")());
-let count = 0;
 
 if (cluster.isPrimary) {
   console.log(`Primary ${process.pid} is running`);
@@ -33,7 +32,6 @@ if (cluster.isPrimary) {
     res.json({
       result,
       health: "good",
-      val: val * 2 + 1,
       id: process.pid,
     });
   });

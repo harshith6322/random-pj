@@ -2,7 +2,9 @@ const mongoose = require("mongoose");
 
 try {
   mongoose
-    .connect("mongodb://mongo-1:27017/")
+    .connect(
+      "mongodb+srv://harshith6322:vszGLXm6WhF3oDcO@cluster0.xb2hjbj.mongodb.net/test5"
+    )
     .then(() => console.log("database is connected"))
     .catch((err) => console.log(`error ${err}`));
 } catch (err) {
