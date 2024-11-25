@@ -31,9 +31,21 @@ import {
 //usecallback
 //usecontext
 //memo
+//usetrasition
+
+//------react-19-hooks------------
+//useActionState()
+//useOptimistic()
+//use()
+//no farword ref()
+
 function App() {
+  const status = useOnlineStatus();
+  console.log(typeof status);
   return (
     <div>
+      {status.toString()}
+      {"harshith"}
       {/* <Usecontextapi> */}
       {/* <Usestate counts={10} />
       <Usestate1 />
@@ -55,7 +67,7 @@ function App() {
     </div>
   );
 }
-
+//------------------------usestate-------------------
 const Usestate = memo(function Usestate({ counts }) {
   const [count, setcount] = useState(counts);
   return (
@@ -127,7 +139,7 @@ function Usestate2() {
     </div>
   );
 }
-
+//---------------------useeffect---------------------
 function UseEffect() {
   const [count, setCount] = useState(0);
 
@@ -268,7 +280,8 @@ function InfiniteScroll() {
     </div>
   );
 }
-//-------------------------start-------------------
+
+//-----------------------usereducer---------------
 function reducer(state, action) {
   console.log("reducerfun", action.payload);
   switch (action.type) {
@@ -343,7 +356,6 @@ function Todo({ todo, dispatch }) {
     </div>
   );
 }
-//-------------------------------------end----------------
 function reducer1(state, action) {
   switch (action.type) {
     case "inc":
@@ -368,7 +380,7 @@ function Usereducer1() {
     </div>
   );
 }
-
+//------------uselayouteffect----------------------------
 function Uselayouteffect() {
   let divref = useRef(null);
   const [rect, setrect] = useState({});
@@ -390,7 +402,7 @@ function Uselayouteffect() {
     </div>
   );
 }
-
+//--------------useref----------------------
 const Useref = () => {
   const inputRef = useRef(null);
 
@@ -423,6 +435,7 @@ const Useref1 = () => {
   );
 };
 
+//--------useImperativeHandle----------------
 function ParentComponent() {
   const inputRef = useRef();
 
@@ -439,7 +452,6 @@ function ParentComponent() {
   );
 }
 
-// eslint-disable-next-line react/display-name
 const CustomInput = forwardRef((props, ref) => {
   const inputRef = useRef();
 
@@ -455,6 +467,7 @@ const CustomInput = forwardRef((props, ref) => {
   return <input ref={inputRef} type="text" placeholder="Enter something" />;
 });
 
+//----------------------usememo---------------
 function ExpensiveCalculationComponent() {
   const [count, setCount] = useState(0);
   const [text, setText] = useState("");
@@ -492,7 +505,7 @@ function ExpensiveCalculationComponent() {
     </div>
   );
 }
-
+//------------------usecallback------------------
 function Usecallback() {
   const [count, setCount] = useState(0);
   const [text, setText] = useState("");
@@ -534,7 +547,7 @@ const ChildComponent = memo(({ onClick }) => {
   );
 });
 
-//---------------------usecontext-api-------
+//---------------------usecontext-api----------
 const Contextapi = createContext();
 function Usecontextapi({ children }) {
   const [post, setpost] = useState(true);
@@ -548,13 +561,12 @@ function Usecontextapi({ children }) {
 }
 
 function Gettingcontext() {
-  // eslint-disable-next-line no-undef
   const { post, setpost, model, setmodel } = useContext(Contextapi);
   return <div>{post.toString()}hi</div>;
 }
 
-//---------------useTransition-----------
-const items = Array.from({ length: 1000 }, (_, index) => `Item ${index + 1}`);
+//---------------useTransition------------------------
+const items = Array.from({ length: 10000 }, (_, index) => `Item ${index + 1}`);
 
 function UseTransition() {
   const [search, setSearch] = useState("");
@@ -593,7 +605,7 @@ function UseTransition() {
     </div>
   );
 }
-//-----------coustam hook and usedebughook
+//-----------coustam hook and usedebughook-----------------
 
 function useOnlineStatus() {
   const [isOnline, setIsOnline] = useState(navigator.onLine);
@@ -617,7 +629,7 @@ function useOnlineStatus() {
   return isOnline;
 }
 
-//----------------useid--
+//----------------useid-------------------------------------
 function Useid() {
   const id = useId();
   console.log(id);
